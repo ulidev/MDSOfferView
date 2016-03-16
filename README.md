@@ -1,5 +1,9 @@
 # MDSOfferView
 
+![CocoaPods Platform](https://img.shields.io/cocoapods/p/MDSOfferView.svg?style=flat-square)
+![CocoaPods Version](https://img.shields.io/cocoapods/v/MDSOfferView.svg?style=flat-square)
+![CocoaPods License](https://img.shields.io/cocoapods/l/MDSOfferView.svg?style=flat-square)
+
 A view that imitates the download/offer button in the App Store app.
 
 ![MDSOfferView](https://raw.githubusercontent.com/YuAo/MDSOfferView/master/Assets/Demo.gif)
