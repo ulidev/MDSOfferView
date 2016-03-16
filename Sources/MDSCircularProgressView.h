@@ -4,6 +4,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 IB_DESIGNABLE
 @interface MDSCircularProgressView : UIView
 
@@ -14,3 +16,5 @@ IB_DESIGNABLE
 - (void)setProgress:(double)progress animated:(BOOL)animated;
 
 @end
+
+NS_ASSUME_NONNULL_END

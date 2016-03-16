@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSUInteger, MDSOfferViewState) {
     MDSOfferViewStateNormal,
     MDSOfferViewStatePendingDownload,
@@ -26,18 +28,16 @@ IB_DESIGNABLE
 
 @property (nonatomic) BOOL enabled;
 
+- (void)setTitle:(nullable NSString *)title forState:(MDSOfferViewState)state;
 
-- (void)setTitle:(NSString *)title forState:(MDSOfferViewState)state;
+- (nullable NSString *)titleForState:(MDSOfferViewState)state;
 
-- (NSString *)titleForState:(MDSOfferViewState)state;
+@property (nonatomic, readonly, nullable) NSString *currentTitle;
 
-@property (nonatomic,copy,readonly) NSString *currentTitle;
+@property (nonatomic, readonly) UIButton *actionButton;
 
-
-@property (nonatomic,readonly) UIButton *actionButton;
-
-- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
-
-- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+@property (nonatomic, copy, nullable) void (^actionHandler)(MDSOfferView *offerView);
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -46,6 +46,7 @@
     button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     button.contentEdgeInsets = UIEdgeInsetsMake(4, 8, 4, 8);
     button.clipsToBounds = YES;
+    [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     self.button = button;
     self.button.layer.cornerRadius = 3;
@@ -91,7 +92,7 @@
     self.progressView.frame = progressRect;
     self.pendingView.frame = progressRect;
     self.stopSymbolView.frame = progressRect;
-    self.stopSymbolView.symbolSize = ceil(CGRectGetHeight(progressRect)/3.5);
+    self.stopSymbolView.symbolSize = ceil(CGRectGetHeight(progressRect)/3.8);
 }
 
 - (void)updateButtonBorderColor {
@@ -183,12 +184,10 @@
     return fittingSize;
 }
 
-- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
-    [self.button addTarget:target action:action forControlEvents:controlEvents];
-}
-
-- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
-    [self.button removeTarget:target action:action forControlEvents:controlEvents];
+- (void)buttonTapped:(UIButton *)sender {
+    if (self.actionHandler) {
+        self.actionHandler(self);
+    }
 }
 
 - (void)setEnabled:(BOOL)enabled {

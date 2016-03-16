@@ -4,6 +4,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 IB_DESIGNABLE
 @interface MDSCircleView : UIView
 
@@ -12,3 +14,5 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat lineWidth;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -16,10 +16,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.offerView.addTarget(self, action: "offerViewTapped:", forControlEvents: .TouchUpInside)
+        self.offerView.actionHandler = { _ in
+            self.offerViewTapped()
+        }
     }
     
-    func offerViewTapped(sender: UIButton) {
+    func offerViewTapped() {
         self.offerView.state = .PendingDownload
         
         Delay(interval: 2.second) {
