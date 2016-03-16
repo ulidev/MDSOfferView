@@ -1,0 +1,16 @@
+PODS:
+  - MDSOfferView (0.1)
+
+DEPENDENCIES:
+  - MDSOfferView (from `../`)
+
+EXTERNAL SOURCES:
+  MDSOfferView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MDSOfferView: e38462454f5f8756063daef003593c12c4c3725a
+
+PODFILE CHECKSUM: f890ed99e23d45ccff3df30e1c537b5a59ad5731
+
+COCOAPODS: 1.0.0.beta.3

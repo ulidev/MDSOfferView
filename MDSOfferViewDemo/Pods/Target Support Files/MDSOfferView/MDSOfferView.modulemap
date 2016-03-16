@@ -1,0 +1,6 @@
+framework module MDSOfferView {
+  umbrella header "MDSOfferView-umbrella.h"
+
+  export *
+  module * { export * }
+}
