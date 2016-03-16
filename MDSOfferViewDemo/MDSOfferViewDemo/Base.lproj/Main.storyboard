@@ -19,6 +19,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gn9-Kq-Ql2" customClass="MDSOfferView">
                                 <rect key="frame" x="277" y="287" width="46" height="26"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.039215686270000001" green="0.73333333329999995" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
