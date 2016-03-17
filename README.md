@@ -12,7 +12,7 @@ A view that imitates the download/offer button in the App Store app.
 
 - Normal/Pending/Downloading/Downloaded states
 
-- Tint color support
+- Tint support
 
 - Progress animation
 
