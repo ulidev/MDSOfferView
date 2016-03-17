@@ -13,44 +13,61 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var offerView: MDSOfferView!
     
+    var showingConfirmation = false
+    
+    let price = "$2.99"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.offerView.setTitle(price, forState: .Normal)
+
         self.offerView.actionHandler = { _ in
             self.offerViewTapped()
         }
     }
     
     func offerViewTapped() {
-        self.offerView.state = .PendingDownload
-        
-        Delay(interval: 2.second) {
+        if !showingConfirmation {
+            showingConfirmation = true
             
-            self.offerView.state = .Downloading
-            self.offerView.setProgress(0.1, animated: true)
+            self.offerView.setTitle("BUY", forState: .Normal)
+            self.offerView.tintColor = UIColor(red: 0.039, green: 0.733, blue: 0.545, alpha: 1)
+        } else {
             
-        }.then(Delay(interval: 0.6.second) {
+            self.offerView.setTitle(price, forState: .Normal)
+            self.offerView.tintColor = nil
             
-            self.offerView.setProgress(0.3, animated: true)
+            self.offerView.state = .PendingDownload
             
-        }).then(Delay(interval: 0.5.second) {
-            
-            self.offerView.setProgress(0.7, animated: true)
-            
-        }).then(Delay(interval: 0.5.second) {
-            
-            self.offerView.setProgress(0.75, animated: true)
-            
-        }).then(Delay(interval: 0.5.second) {
-            
-            self.offerView.setProgress(1.0, animated: true)
-            
-        }).then(Delay(interval: 0.5.second) {
-            
-            self.offerView.state = .Downloaded
-            self.offerView.enabled = false
-            
-        }).run()
+            Delay(interval: 2.second) {
+                
+                self.offerView.state = .Downloading
+                self.offerView.setProgress(0.1, animated: true)
+                
+            }.then(Delay(interval: 0.6.second) {
+                
+                self.offerView.setProgress(0.3, animated: true)
+                
+            }).then(Delay(interval: 0.5.second) {
+                
+                self.offerView.setProgress(0.7, animated: true)
+                
+            }).then(Delay(interval: 0.5.second) {
+                
+                self.offerView.setProgress(0.75, animated: true)
+                
+            }).then(Delay(interval: 0.5.second) {
+                
+                self.offerView.setProgress(1.0, animated: true)
+                
+            }).then(Delay(interval: 0.5.second) {
+                
+                self.offerView.state = .Downloaded
+                self.offerView.enabled = false
+                
+            }).run()
+        }
     }
 }
 
