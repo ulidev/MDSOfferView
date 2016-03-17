@@ -36,7 +36,7 @@ or if you use Cocoapods, add the following to your Podfile
 
 ##MDS
 
-"MDS" is the class prefix of a secret private project of mine.
+"MDS" is the class prefix of a secret private project.
 
 ##License
 
