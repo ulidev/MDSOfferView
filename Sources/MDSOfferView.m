@@ -101,6 +101,7 @@
 
 - (void)tintColorDidChange {
     [super tintColorDidChange];
+    self.button.tintColor = self.tintColor;
     [self updateButtonBorderColor];
 }
 
@@ -108,6 +109,7 @@
     NSMutableDictionary *titles = [NSMutableDictionary dictionaryWithDictionary:self.titles];
     titles[@(state)] = title ?: @"";
     self.titles = titles;
+    [self updateForState];
 }
 
 - (NSString *)titleForState:(MDSOfferViewState)state {

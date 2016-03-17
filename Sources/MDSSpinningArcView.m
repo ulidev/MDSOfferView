@@ -37,7 +37,7 @@ static NSString * const MDSSpinningArcViewSpinAnimationKey = @"MDSSpinningArcVie
     [self addSubview:circleView];
     self.circleView = circleView;
     
-    self.emptyAngle = 0.8;
+    self.emptyAngle = 0.6;
     self.spinDuration = 1.0;
     
     self.userInteractionEnabled = NO;
