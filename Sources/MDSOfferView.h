@@ -49,6 +49,11 @@ IB_DESIGNABLE
 - (void)setTitle:(nullable NSString *)title forState:(MDSOfferViewState)state;
 
 /**
+ Sets the image to use for the specified state.
+ */
+- (void)setImage:(nullable UIImage *)image forState:(MDSOfferViewState)state;
+
+/**
  Returns the title associated with the specified state.
  */
 - (nullable NSString *)titleForState:(MDSOfferViewState)state;
@@ -72,3 +77,4 @@ IB_DESIGNABLE
 @end
 
 NS_ASSUME_NONNULL_END
+

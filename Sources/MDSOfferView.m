@@ -23,6 +23,10 @@
 
 @property (nonatomic,copy) NSDictionary *titles;
 
+@property (nonatomic, strong) NSMutableDictionary *images;
+
+@property (nonatomic, strong) NSMutableDictionary *contentStates;
+
 @end
 
 @implementation MDSOfferView
@@ -56,7 +60,7 @@
     progressView.progress = 0;
     [self addSubview:progressView];
     self.progressView = progressView;
- 
+    
     MDSStopSymbolView *stopSymbolView = [[MDSStopSymbolView alloc] initWithFrame:CGRectZero];
     [self addSubview:stopSymbolView];
     self.stopSymbolView = stopSymbolView;
@@ -71,6 +75,8 @@
     
     [self updateButtonBorderColor];
     self.state = MDSOfferViewStateNormal;
+    self.images = [NSMutableDictionary new];
+    self.contentStates = [NSMutableDictionary new];
 }
 
 - (double)progress {
@@ -109,6 +115,13 @@
     NSMutableDictionary *titles = [NSMutableDictionary dictionaryWithDictionary:self.titles];
     titles[@(state)] = title ?: @"";
     self.titles = titles;
+    [self.contentStates setObject:@(YES) forKey:@(state)];
+    [self updateForState];
+}
+
+- (void)setImage:(UIImage *)image forState:(MDSOfferViewState)state {
+    [self.images setObject:image forKey:@(state)];
+    [self.contentStates setObject:@(YES) forKey:@(state)];
     [self updateForState];
 }
 
@@ -129,7 +142,11 @@
 - (void)updateForState {
     switch (self.state) {
         case MDSOfferViewStateNormal:
-            [self.button setTitle:self.titles[@(MDSOfferViewStateNormal)] forState:UIControlStateNormal];
+            if ([self.contentStates[@(MDSOfferViewStateNormal)] boolValue]) {
+                [self.button setImage:self.images[@(MDSOfferViewStateNormal)] forState:UIControlStateNormal];
+            } else {
+                [self.button setTitle:self.titles[@(MDSOfferViewStateNormal)] forState:UIControlStateNormal];
+            }
             self.button.layer.borderWidth = 1;
             self.progressView.hidden = YES;
             self.stopSymbolView.hidden = YES;
@@ -137,6 +154,7 @@
             self.pendingView.hidden = YES;
             break;
         case MDSOfferViewStatePendingDownload:
+            [self.button setImage:nil forState:UIControlStateNormal];
             [self.button setTitle:nil forState:UIControlStateNormal];
             self.button.layer.borderWidth = 0;
             self.progressView.hidden = YES;
@@ -145,6 +163,7 @@
             self.pendingView.hidden = NO;
             break;
         case MDSOfferViewStateDownloading:
+            [self.button setImage:nil forState:UIControlStateNormal];
             [self.button setTitle:nil forState:UIControlStateNormal];
             self.button.layer.borderWidth = 0;
             self.progressView.hidden = NO;
@@ -153,7 +172,11 @@
             self.pendingView.hidden = YES;
             break;
         case MDSOfferViewStateDownloaded:
-            [self.button setTitle:self.titles[@(MDSOfferViewStateDownloaded)] forState:UIControlStateNormal];
+            if ([self.contentStates[@(MDSOfferViewStateDownloaded)] boolValue]) {
+                [self.button setImage:self.images[@(MDSOfferViewStateDownloaded)] forState:UIControlStateNormal];
+            } else {
+                [self.button setTitle:self.titles[@(MDSOfferViewStateNormal)] forState:UIControlStateNormal];
+            }
             [self.button setImage:nil forState:UIControlStateNormal];
             self.button.layer.borderWidth = 1;
             self.progressView.hidden = YES;
@@ -203,3 +226,4 @@
 }
 
 @end
+
