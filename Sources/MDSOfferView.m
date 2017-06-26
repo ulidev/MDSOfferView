@@ -143,6 +143,9 @@
 }
 
 - (void)updateForState {
+    [self.button setImage:nil forState:UIControlStateNormal];
+    [self.button setTitle:nil forState:UIControlStateNormal];
+    
     switch (self.state) {
         case MDSOfferViewStateNormal:
             if ([self.contentStates[@(MDSOfferViewStateNormal)] boolValue]) {
