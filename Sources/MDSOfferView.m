@@ -120,6 +120,9 @@
 }
 
 - (void)setImage:(UIImage *)image forState:(MDSOfferViewState)state {
+    NSMutableDictionary *titles = [NSMutableDictionary dictionaryWithDictionary:self.titles];
+    titles[@(state)] = @"";
+    self.titles = titles;
     [self.images setObject:image forKey:@(state)];
     [self.contentStates setObject:@(YES) forKey:@(state)];
     [self updateForState];
