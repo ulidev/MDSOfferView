@@ -172,17 +172,13 @@
             self.pendingView.hidden = YES;
             break;
         case MDSOfferViewStatePendingDownload:
-            [self.button setImage:nil forState:UIControlStateNormal];
-            [self.button setTitle:nil forState:UIControlStateNormal];
             self.button.layer.borderWidth = 0;
             self.progressView.hidden = YES;
             self.stopSymbolView.hidden = YES;
             [self.pendingView startSpinning];
             self.pendingView.hidden = NO;
             break;
-        case MDSOfferViewStateDownloading:
-            [self.button setImage:nil forState:UIControlStateNormal];
-            [self.button setTitle:nil forState:UIControlStateNormal];
+        case MDSOfferViewStateDownloading:;
             self.button.layer.borderWidth = 0;
             self.progressView.hidden = NO;
             self.stopSymbolView.hidden = NO;
@@ -190,8 +186,6 @@
             self.pendingView.hidden = YES;
             break;
         case MDSOfferViewStateDownloaded:
-            [self.button setImage:nil forState:UIControlStateNormal];
-            [self.button setTitle:nil forState:UIControlStateNormal];
             if ([self.contentStates[@(MDSOfferViewStateDownloaded)] boolValue]) {
                 [self.button setImage:self.images[@(MDSOfferViewStateDownloaded)] forState:UIControlStateNormal];
             } else {
