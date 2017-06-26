@@ -46,6 +46,7 @@
 }
 
 - (void)setupOfferView {
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     button.contentEdgeInsets = UIEdgeInsetsMake(4, 8, 4, 8);
@@ -53,7 +54,9 @@
     [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     self.button = button;
-    self.button.layer.cornerRadius = 3;
+    
+    self.roundCorners = false;
+    
     
     MDSCircularProgressView *progressView = [[MDSCircularProgressView alloc] initWithFrame:CGRectZero];
     progressView.userInteractionEnabled = NO;
@@ -91,6 +94,11 @@
     [self.progressView setProgress:progress animated:animated];
 }
 
+- (void)setRoundCorners:(BOOL)roundCorners {
+    _roundCorners = roundCorners;
+    [self updateCornerRadius];
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.button.frame = self.bounds;
@@ -103,6 +111,10 @@
 
 - (void)updateButtonBorderColor {
     self.button.layer.borderColor = self.button.currentTitleColor.CGColor;
+}
+
+- (void)updateCornerRadius {
+    self.button.layer.cornerRadius = self.roundCorners ? CGRectGetHeight(self.frame)/2 : 3;
 }
 
 - (void)tintColorDidChange {

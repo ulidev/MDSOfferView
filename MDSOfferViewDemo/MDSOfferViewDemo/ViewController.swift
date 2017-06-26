@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.offerView.setTitle(price, forState: .Normal)
+        self.offerView.roundCorners = true;
 
         self.offerView.actionHandler = { _ in
             self.offerViewTapped()

@@ -44,6 +44,11 @@ IB_DESIGNABLE
 @property (nonatomic) BOOL enabled;
 
 /**
+ A Boolean value that indicate if view has round corners
+ */
+@property (nonatomic) BOOL roundCorners;
+
+/**
  Sets the title to use for the specified state.
  */
 - (void)setTitle:(nullable NSString *)title forState:(MDSOfferViewState)state;
@@ -73,6 +78,7 @@ IB_DESIGNABLE
  A block that is called when the user tap the action button.
  */
 @property (nonatomic, copy, nullable) void (^actionHandler)(MDSOfferView *offerView);
+
 
 @end
 
