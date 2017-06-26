@@ -190,12 +190,13 @@
             self.pendingView.hidden = YES;
             break;
         case MDSOfferViewStateDownloaded:
+            [self.button setImage:nil forState:UIControlStateNormal];
+            [self.button setTitle:nil forState:UIControlStateNormal];
             if ([self.contentStates[@(MDSOfferViewStateDownloaded)] boolValue]) {
                 [self.button setImage:self.images[@(MDSOfferViewStateDownloaded)] forState:UIControlStateNormal];
             } else {
-                [self.button setTitle:self.titles[@(MDSOfferViewStateNormal)] forState:UIControlStateNormal];
+                [self.button setTitle:self.titles[@(MDSOfferViewStateDownloaded)] forState:UIControlStateNormal];
             }
-            [self.button setImage:nil forState:UIControlStateNormal];
             self.button.layer.borderWidth = 1;
             self.progressView.hidden = YES;
             self.stopSymbolView.hidden = YES;
@@ -205,6 +206,7 @@
         default:
             break;
     }
+    
     [UIView performWithoutAnimation:^{
         [self.button layoutIfNeeded];
     }];
